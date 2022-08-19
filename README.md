@@ -5,15 +5,11 @@ A website for tracking Isaac streaking records.
 ## Developing
 
 ```bash
-yarn dev --open
+./run.sh
 ```
 
 ## Building
 
 ```bash
-yarn build
+./build.sh
 ```
-
-You can preview the production build with `yarn preview`.
-
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
