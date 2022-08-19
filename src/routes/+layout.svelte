@@ -1,24 +1,49 @@
 <script lang="ts">
   import Leaderboard from "$lib/Leaderboard.svelte";
-  import { Disclosure, Menu, Transition } from "@rgossiaux/svelte-headlessui";
-  import { Bell, Menu as MenuIcon, X } from "@steeze-ui/heroicons";
+  import {
+    Disclosure,
+    DisclosureButton,
+    DisclosurePanel,
+    Menu,
+    MenuButton,
+    MenuItem,
+    MenuItems,
+    Transition,
+  } from "@rgossiaux/svelte-headlessui";
+  import {
+    MenuIcon,
+    XIcon,
+    LoginIcon,
+  } from "@rgossiaux/svelte-heroicons/outline";
   import "../app.postcss";
 
-  const user = {
+  interface User {
+    name: string;
+    email: string;
+    imageUrl: string;
+  }
+
+  let user: User | undefined = {
     name: "Tom Cook",
     email: "tom@example.com",
     imageUrl:
       "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
   };
+
   const navigation = [
-    { name: "Eden", href: "#", current: true },
-    { name: "Tainted Lost", href: "#", current: false },
+    { name: "Eden", href: "/eden", current: true },
+    { name: "Tainted Lost", href: "/lost", current: false },
+    { name: "About", href: "/about", current: false },
   ];
   const userNavigation = [{ name: "Sign out", href: "#" }];
+
+  function classNames(...classes: string[]) {
+    return classes.filter(Boolean).join(" ");
+  }
 </script>
 
 <div class="min-h-full">
-  <nav class="border-b border-gray-200">
+  <Disclosure as="nav" class="bg-white border-b border-gray-200" let:open>
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex justify-between h-16">
         <div class="flex">
@@ -36,20 +61,18 @@
             <div class="mx-4 flex space-x-1 font-bold">Isaac Streaking</div>
           </div>
           <div class="hidden sm:-my-px sm:ml-6 sm:flex sm:space-x-8">
-            <!-- Current: "border-indigo-500 text-gray-900", Default: "border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700" -->
-            <div
-              class="border-indigo-500 text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium"
-              aria-current="page"
-            >
-              Eden
-            </div>
-
-            <a
-              href="/tainted-lost"
-              class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium"
-            >
-              Tainted Lost
-            </a>
+            {#each navigation as item (item.name)}
+              <!-- The Svelte language server stops working if we put logic inside of a class ternary for some reason. -->
+              <a
+                href={item.href}
+                class={item.current
+                  ? "inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium border-indigo-500 text-gray-900"
+                  : "inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700"}
+                aria-current={item.current ? "page" : undefined}
+              >
+                {item.name}
+              </a>
+            {/each}
           </div>
         </div>
 
@@ -68,279 +91,128 @@
           </a>
 
           <!-- GitHub -->
-          <button
-            type="button"
-            class="p-1 text-gray-500 hover:text-gray-700 mr-8 header-github-link"
-          />
-
-          <!-- Sun/Moon -->
-          <!--
-          <button
-            type="button"
-            class="bg-white p-1 rounded-full text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 mr-2"
+          <a
+            href="https://github.com/Zamiell/isaac-leaderboards"
+            target="_blank"
+            rel="noopener noreferrer"
           >
-            <span class="sr-only">View notifications</span>
-            <svg
-              viewBox="0 0 24 24"
-              width="24"
-              height="24"
-              class="darkToggleIcon_Yem1"
-              ><path
-                fill="currentColor"
-                d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"
-              /></svg
-            >
-          </button>
-          -->
-
-          <!-- Sun -->
-          <!--
-            <svg viewBox="0 0 24 24" width="24" height="24" class="lightToggleIcon_Sxwe"><path fill="currentColor" d="M12,9c1.65,0,3,1.35,3,3s-1.35,3-3,3s-3-1.35-3-3S10.35,9,12,9 M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5 S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1 s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0 c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95 c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41 L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41 s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06 c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z"></path></svg>
-          -->
-
-          <!-- Bell -->
-          <button
-            type="button"
-            class="bg-white p-1 rounded-full text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-          >
-            <span class="sr-only">View notifications</span>
-            <svg
-              class="h-6 w-6"
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke-width="2"
-              stroke="currentColor"
-              aria-hidden="true"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"
-              />
-            </svg>
-          </button>
+            <button
+              type="button"
+              class="p-1 text-gray-500 hover:text-gray-700 mr-16 header-github-link"
+            />
+          </a>
 
           <!-- Profile dropdown -->
-          <div class="ml-3 relative">
-            <div>
-              <button
-                type="button"
-                class="max-w-xs bg-white flex items-center text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                id="user-menu-button"
-                aria-expanded="false"
-                aria-haspopup="true"
+          {#if user}
+            <Menu as="div" class="ml-3 relative">
+              <div>
+                <MenuButton
+                  class="max-w-xs bg-white flex items-center text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                >
+                  <span class="sr-only">Open user menu</span>
+                  <img
+                    class="h-8 w-8 rounded-full"
+                    src={user.imageUrl}
+                    alt=""
+                  />
+                </MenuButton>
+              </div>
+              <Transition
+                enter="transition ease-out duration-200"
+                enterFrom="transform opacity-0 scale-95"
+                enterTo="transform opacity-100 scale-100"
+                leave="transition ease-in duration-75"
+                leaveFrom="transform opacity-100 scale-100"
+                leaveTo="transform opacity-0 scale-95"
               >
-                <span class="sr-only">Open user menu</span>
-                <img
-                  class="h-8 w-8 rounded-full"
-                  src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                  alt=""
-                />
-              </button>
-            </div>
-
-            <!--
-              Dropdown menu, show/hide based on menu state.
-
-              Entering: "transition ease-out duration-200"
-                From: "transform opacity-0 scale-95"
-                To: "transform opacity-100 scale-100"
-              Leaving: "transition ease-in duration-75"
-                From: "transform opacity-100 scale-100"
-                To: "transform opacity-0 scale-95"
-            -->
-            <div
-              class="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none"
-              role="menu"
-              aria-orientation="vertical"
-              aria-labelledby="user-menu-button"
-              tabindex="-1"
-            >
-              <!-- Active: "bg-gray-100", Not Active: "" -->
-              <a
-                href="/profile"
-                class="block px-4 py-2 text-sm text-gray-700"
-                role="menuitem"
-                tabindex="-1"
-                id="user-menu-item-0"
-              >
-                Your Profile
-              </a>
-
-              <a
-                href="/settings"
-                class="block px-4 py-2 text-sm text-gray-700"
-                role="menuitem"
-                tabindex="-1"
-                id="user-menu-item-1"
-              >
-                Settings
-              </a>
-
-              <a
-                href="/sign-out"
-                class="block px-4 py-2 text-sm text-gray-700"
-                role="menuitem"
-                tabindex="-1"
-                id="user-menu-item-2"
-              >
-                Sign out
-              </a>
-            </div>
-          </div>
+                <MenuItems
+                  class="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none"
+                >
+                  {#each userNavigation as item (item.name)}
+                    <MenuItem let:active>
+                      <a
+                        href={item.href}
+                        class="block px-4 py-2 text-sm text-gray-700"
+                        class:bg-gray-100={active}
+                      >
+                        {item.name}
+                      </a>
+                    </MenuItem>
+                  {/each}
+                </MenuItems>
+              </Transition>
+            </Menu>
+          {:else}
+            <a href="/login" class="flex">
+              <LoginIcon class="-ml-1 mr-2 h-6 w-6" aria-hidden="true" />
+              Sign in
+            </a>
+          {/if}
         </div>
-
         <div class="-mr-2 flex items-center sm:hidden">
           <!-- Mobile menu button -->
-          <button
-            type="button"
+          <DisclosureButton
             class="bg-white inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-            aria-controls="mobile-menu"
-            aria-expanded="false"
           >
             <span class="sr-only">Open main menu</span>
-            <!--
-              Heroicon name: outline/menu
-
-              Menu open: "hidden", Menu closed: "block"
-            -->
-            <svg
-              class="block h-6 w-6"
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke-width="2"
-              stroke="currentColor"
-              aria-hidden="true"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                d="M4 6h16M4 12h16M4 18h16"
-              />
-            </svg>
-            <!--
-              Heroicon name: outline/x
-
-              Menu open: "block", Menu closed: "hidden"
-            -->
-            <svg
-              class="hidden h-6 w-6"
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke-width="2"
-              stroke="currentColor"
-              aria-hidden="true"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                d="M6 18L18 6M6 6l12 12"
-              />
-            </svg>
-          </button>
+            {#if open}
+              <XIcon class="block h-6 w-6" aria-hidden="true" />
+            {:else}
+              <MenuIcon class="block h-6 w-6" aria-hidden="true" />
+            {/if}
+          </DisclosureButton>
         </div>
       </div>
     </div>
 
-    <!-- Mobile menu, show/hide based on menu state. -->
-    <div class="sm:hidden" id="mobile-menu">
-      <div class="pt-2 pb-3 space-y-1">
-        <!-- Current: "bg-indigo-50 border-indigo-500 text-indigo-700", Default: "border-transparent text-gray-600 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-800" -->
-        <a
-          href="/eden"
-          class="bg-indigo-50 border-indigo-500 text-indigo-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium"
-          aria-current="page"
-        >
-          Eden
-        </a>
-
-        <a
-          href="/tainted-lost"
-          class="border-transparent text-gray-600 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-800 block pl-3 pr-4 py-2 border-l-4 text-base font-medium"
-        >
-          Tainted Lost
-        </a>
-      </div>
-      <div class="pt-4 pb-3 border-t border-gray-200">
-        <div class="flex items-center px-4">
-          <div class="flex-shrink-0">
-            <img
-              class="h-10 w-10 rounded-full"
-              src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-              alt=""
-            />
-          </div>
-          <div class="ml-3">
-            <div class="text-base font-medium text-gray-800">Tom Cook</div>
-            <div class="text-sm font-medium text-gray-500">tom@example.com</div>
-          </div>
-          <button
-            type="button"
-            class="ml-auto bg-white flex-shrink-0 p-1 rounded-full text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-          >
-            <span class="sr-only">View notifications</span>
-            <!-- Heroicon name: outline/bell -->
-            <svg
-              class="h-6 w-6"
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke-width="2"
-              stroke="currentColor"
-              aria-hidden="true"
+    {#if user}
+      <DisclosurePanel class="sm:hidden">
+        <div class="pt-2 pb-3 space-y-1">
+          {#each navigation as item (item.name)}
+            <DisclosureButton
+              as="a"
+              href={item.href}
+              class={classNames(
+                item.current
+                  ? "bg-indigo-50 border-indigo-500 text-indigo-700"
+                  : "border-transparent text-gray-600 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-800",
+                "block pl-3 pr-4 py-2 border-l-4 text-base font-medium",
+              )}
+              aria-current={item.current ? "page" : undefined}
             >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"
-              />
-            </svg>
-          </button>
+              {item.name}
+            </DisclosureButton>
+          {/each}
         </div>
-        <div class="mt-3 space-y-1">
-          <a
-            href="/profile"
-            class="block px-4 py-2 text-base font-medium text-gray-500 hover:text-gray-800 hover:bg-gray-100"
-          >
-            Your Profile
-          </a>
 
-          <a
-            href="/settings"
-            class="block px-4 py-2 text-base font-medium text-gray-500 hover:text-gray-800 hover:bg-gray-100"
-          >
-            Settings
-          </a>
-
-          <a
-            href="/sign-out"
-            class="block px-4 py-2 text-base font-medium text-gray-500 hover:text-gray-800 hover:bg-gray-100"
-          >
-            Sign out
-          </a>
+        <div class="pt-4 pb-3 border-t border-gray-200">
+          <div class="flex items-center px-4">
+            <div class="flex-shrink-0">
+              <img class="h-10 w-10 rounded-full" src={user.imageUrl} alt="" />
+            </div>
+            <div class="ml-3">
+              <div class="text-base font-medium text-gray-800">{user.name}</div>
+              <div class="text-sm font-medium text-gray-500">{user.email}</div>
+            </div>
+          </div>
+          <div class="mt-3 space-y-1">
+            {#each userNavigation as item (item.name)}
+              <DisclosureButton
+                as="a"
+                href={item.href}
+                class="block px-4 py-2 text-base font-medium text-gray-500 hover:text-gray-800 hover:bg-gray-100"
+              >
+                {item.name}
+              </DisclosureButton>
+            {/each}
+          </div>
         </div>
-      </div>
-    </div>
-  </nav>
+      </DisclosurePanel>
+    {/if}
+  </Disclosure>
 
-  <div class="py-10 dark:bg-zinc-900">
-    <header>
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h1
-          class="text-3xl tracking-tight font-bold leading-tight text-gray-900"
-        >
-          Eden Streak Leaderboards
-        </h1>
-      </div>
-    </header>
-    <main>
-      <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-        <Leaderboard />
-      </div>
-    </main>
+  <div class="py-10">
+    <slot />
   </div>
 </div>
 
