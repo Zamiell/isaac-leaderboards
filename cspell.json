@@ -1,0 +1,52 @@
+{
+  "$schema": "https://raw.githubusercontent.com/streetsidesoftware/cspell/main/cspell.schema.json",
+  "version": "0.2",
+  "files": [
+    "**"
+  ],
+  "enableFiletypes": [
+    "*"
+  ],
+  "enableGlobDot": true,
+  "ignorePaths": [
+    ".git/**",
+    "dist/**",
+    "node_modules/**",
+    ".svelte-kit/**"
+  ],
+  "words": [
+    "Andvil",
+    "Cpath",
+    "Csvg",
+    "fira",
+    "fontsource",
+    "haspopup",
+    "headlessui",
+    "Heroicon",
+    "heroicons",
+    "isaacscript",
+    "labelledby",
+    "Leaderboard",
+    "leaderboards",
+    "linecap",
+    "linejoin",
+    "noopener",
+    "noreferrer",
+    "nowrap",
+    "postcss",
+    "rgba",
+    "rgossiaux",
+    "srcset",
+    "steeze",
+    "sveltejs",
+    "sveltekit",
+    "Sxwe",
+    "tabindex",
+    "tailwindcss",
+    "tbody",
+    "thead",
+    "Todos",
+    "webp",
+    "xlink"
+  ]
+}

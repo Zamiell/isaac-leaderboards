@@ -1,23 +1,23 @@
-import type { Handle } from '@sveltejs/kit';
-import * as cookie from 'cookie';
+import type { Handle } from "@sveltejs/kit";
+import * as cookie from "cookie";
 
 export const handle: Handle = async ({ event, resolve }) => {
-	const cookies = cookie.parse(event.request.headers.get('cookie') || '');
-	event.locals.userid = cookies['userid'] || crypto.randomUUID();
+  const existingCookie = event.request.headers.get("cookie") ?? "";
+  const cookies = cookie.parse(existingCookie);
+  const userID = cookies.userID === "" ? crypto.randomUUID() : cookies.userID;
+  event.locals.userID = userID;
 
-	const response = await resolve(event);
+  const response = await resolve(event);
 
-	if (!cookies['userid']) {
-		// if this is the first time the user has visited this app,
-		// set a cookie so that we recognise them when they return
-		response.headers.set(
-			'set-cookie',
-			cookie.serialize('userid', event.locals.userid, {
-				path: '/',
-				httpOnly: true
-			})
-		);
-	}
+  // If this is the first time the user has visited this app, set a cookie so that we recognize them
+  // when they return.
+  response.headers.set(
+    "set-cookie",
+    cookie.serialize("userID", userID, {
+      path: "/",
+      httpOnly: true,
+    }),
+  );
 
-	return response;
+  return response;
 };

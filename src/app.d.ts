@@ -1,14 +1,13 @@
 // See https://kit.svelte.dev/docs/types#app
-// for information about these interfaces
-// and what to do when importing types
+// For information about these interfaces and what to do when importing types.
 declare namespace App {
-	interface Locals {
-		userid: string;
-	}
+  interface Locals {
+    userID: string;
+  }
 
-	// interface Platform {}
+  // interface Platform {}
 
-	// interface PrivateEnv {}
+  // interface PrivateEnv {}
 
-	// interface PublicEnv {}
+  // interface PublicEnv {}
 }

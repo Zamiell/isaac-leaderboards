@@ -1,0 +1,3 @@
+# Ignore compiled output.
+.svelte-kit
+dist
