@@ -115,10 +115,9 @@
               at the end of your run.)
             </li>
             <li>
-              Playing on PC is preferred, but you are allowed to play on any
-              other system if you want (such as the Nintendo Switch), as long as
-              the seeds would be indentical to what they would be on PC for
-              verification purposes.
+              You must play on PC, so that other people can replay your seeds to
+              verify your runs. (For example, replaying a seed from the Nintendo
+              Switch on PC would result in a completely different layout.)
             </li>
             <li>
               You are allowed to end the run on another character than the one
