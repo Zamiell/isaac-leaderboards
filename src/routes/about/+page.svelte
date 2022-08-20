@@ -120,6 +120,12 @@
               Switch on PC would result in a completely different layout.)
             </li>
             <li>
+              You must play on the latest version of the game, so that other
+              people can easily replay your seeds to verify your runs. (For
+              example, reverting your game to a previous patch before something
+              was changed is not allowed.)
+            </li>
+            <li>
               You are allowed to end the run on another character than the one
               you started with. (For example, you are allowed to take Judas'
               Shadow and revive as Dark Judas.)
