@@ -171,9 +171,8 @@
               >. (Or, you can manually install
               <a
                 href="https://github.com/Zamiell/isaac-save-installer/raw/main/saves/Repentance/persistentgamedata.dat"
-              >
-                this file
-              </a>.)
+                >this file</a
+              >.)
             </li>
             <li>
               <a
@@ -182,7 +181,8 @@
                 rel="noopener noreferrer"
               >
                 Isaac Rankings
-              </a> - The most skilled Isaac players in the world participate in tournaments.
+              </a> - The most skilled Isaac players in the world participate in live
+              speedrunning tournaments.
             </li>
             <li>
               <a
@@ -190,8 +190,8 @@
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                Isaac Racing
-              </a> - Home of Racing+, a racing mod.
+                Racing+
+              </a> - A racing mod and platform to compete with others.
             </li>
           </ul>
         </div>
