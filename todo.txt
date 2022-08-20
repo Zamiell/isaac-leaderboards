@@ -1,0 +1,2 @@
+- prisma + leaderboard data in DB
+- discord login
