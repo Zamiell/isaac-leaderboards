@@ -166,10 +166,14 @@
               </a> - This website was based on this resource.
             </li>
             <li>
-              - <a
-                href="https://github.com/Zamiell/isaac-save-installer/releases"
-                >100% save file installer</a
-              >.
+              <a href="https://github.com/Zamiell/isaac-save-installer/releases"
+                >A 100% save file installer</a
+              >. (Or, you can manually install
+              <a
+                href="https://github.com/Zamiell/isaac-save-installer/raw/main/saves/Repentance/persistentgamedata.dat"
+              >
+                this file
+              </a>.)
             </li>
             <li>
               <a
