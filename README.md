@@ -4,6 +4,8 @@ A website for tracking Isaac streaking records.
 
 Join our [Discord server](https://discord.gg/GwhUeQjHTF).
 
+<br>
+
 ## Dev
 
 Clone the repo and install dependencies:
