@@ -3,7 +3,13 @@
 </script>
 
 <header>
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex">
+    <img
+      src="tainted-lost.png"
+      alt="Tainted Lost"
+      class="h-12 w-10 relative bottom-1"
+    />
+    <div class="pr-6" />
     <h1 class="text-3xl tracking-tight font-bold leading-tight text-gray-900">
       Tainted Lost Leaderboards
     </h1>

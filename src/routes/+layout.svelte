@@ -1,5 +1,4 @@
 <script lang="ts">
-  import Leaderboard from "$lib/Leaderboard.svelte";
   import {
     Disclosure,
     DisclosureButton,
@@ -16,6 +15,7 @@
     LoginIcon,
   } from "@rgossiaux/svelte-heroicons/outline";
   import "../app.postcss";
+  import { page } from "$app/stores";
 
   interface User {
     name: string;
@@ -30,10 +30,11 @@
       "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
   };
 
-  const navigation = [
-    { name: "Eden", href: "/eden", current: true },
-    { name: "Tainted Lost", href: "/lost", current: false },
-    { name: "About", href: "/about", current: false },
+  $: path = $page.url.pathname;
+  $: navigation = [
+    { name: "Eden", href: "/eden", current: path === "/eden" },
+    { name: "Tainted Lost", href: "/lost", current: path === "/lost" },
+    { name: "About", href: "/about", current: path === "/about" },
   ];
   const userNavigation = [{ name: "Sign out", href: "#" }];
 
