@@ -58,17 +58,29 @@
             </li>
             <li>
               You are not allowed to pause the game in order to gain any type of
-              gameplay advantage. (For example, you are not allowed to slow down
-              the action in a difficult room, escape incoming damage, and so
-              on.)
+              gameplay advantage. (For example, you are not allowed to pause in
+              the middle of a fight to think about what to do next, go back to
+              the menu to escape damage, stop a restock machine from "double
+              rolling", and so on.)
             </li>
             <li>
               Every run must be streamed live on
-              <a href="https://www.twitch.tv">Twitch</a>
+              <a
+                href="https://www.twitch.tv"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Twitch
+              </a>
               or
-              <a href="https://www.youtube.com/">YouTube</a>. (For example,
-              showing video recordings of your run after the fact does not
-              count.)
+              <a
+                href="https://www.youtube.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                YouTube
+              </a>. (For example, showing video recordings of your run after the
+              fact does not count.)
             </li>
             <li>
               Any mods that affect the gameplay are forbidden. (For example,
@@ -79,12 +91,51 @@
             <li>
               All runs should have the seeds visible on the screen, so that they
               can be replayed to verify if you are cheating. (We recommend using
-              the <a href="https://github.com/Rchardon/RebirthItemTracker"
-                >Rebirth Item Tracker</a
-              > for this purpose. Otherwise, you can pause at the beginning and at
-              the end of your run.)
+              the <a
+                href="https://github.com/Rchardon/RebirthItemTracker"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Rebirth Item Tracker
+              </a> for this purpose. Otherwise, you can pause at the beginning and
+              at the end of your run.)
             </li>
           </ol>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 mb-12">
+    <div class="bg-gray-50 shadow sm:rounded-lg sm:overflow-hidden">
+      <div class="divide-y divide-gray-200">
+        <div class="px-4 py-5 sm:px-6">
+          <h2 class="section-header">Other Links</h2>
+          <ul class="section-text">
+            <li>
+              <a
+                href="https://docs.google.com/spreadsheets/d/1So2N0caOnTe7ctLg1OYEYg_8Eqc_ak03Vm4TXsgHG0c/edit#gid=2144039399"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                The old Isaac Streaking Google spreadsheet
+              </a> - This website was based on this resource.
+            </li>
+            <li>
+              <a
+                href="https://isaacrankings.com/"
+                target="_blank"
+                rel="noopener noreferrer">Isaac Rankings</a
+              > - The most skilled Isaac players in the world participate in tournaments.
+            </li>
+            <li>
+              <a
+                href="https://isaacracing.net/"
+                target="_blank"
+                rel="noopener noreferrer">Isaac Racing</a
+              > - Home of Racing+, a racing mod.
+            </li>
+          </ul>
         </div>
       </div>
     </div>
