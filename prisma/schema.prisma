@@ -9,6 +9,7 @@ generator client {
 
 model User {
   id                 Int               @id @default(autoincrement())
+  discordID          Int               @unique
   username           String            @unique
   normalizedUsername String            @unique
   passwordHash       String
