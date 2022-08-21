@@ -25,7 +25,7 @@ Set up environment variables:
 
 ```bash
 cp .env.example .env
-code .env
+code .env # Fill in the values accordingly.
 ```
 
 Run the server for development:

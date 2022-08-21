@@ -4,7 +4,7 @@ import type { PageServerLoad } from "./$types";
 
 export const REDIRECT_URI = "http://localhost:5173/api/discord/auth-callback";
 
-export const load: PageServerLoad = async ({ url, locals }) => {
+export const load: PageServerLoad = async ({ locals, url }) => {
   const code = url.searchParams.get("code");
   if (code === null || code === "") {
     throw error(401, "Invalid Discord authorization code.");
