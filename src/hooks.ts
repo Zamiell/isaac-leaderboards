@@ -1,23 +1,49 @@
+import { SESSION_KEY } from "$env/static/private";
 import type { Handle } from "@sveltejs/kit";
 import * as cookie from "cookie";
+import aes from "crypto-js/aes";
+
+const COOKIE_NAME = "discordAccessToken";
 
 export const handle: Handle = async ({ event, resolve }) => {
-  const existingCookie = event.request.headers.get("cookie") ?? "";
-  const cookies = cookie.parse(existingCookie);
-  const userID = cookies.userID === "" ? crypto.randomUUID() : cookies.userID;
-  event.locals.userID = userID;
+  // Before running the route logic.
+  {
+    const cookieHeader = event.request.headers.get("cookie") ?? "";
+    const cookies = cookie.parse(cookieHeader);
+    const discordAccessTokenEncrypted = cookies[COOKIE_NAME];
 
+    if (discordAccessTokenEncrypted === "") {
+      event.locals.discordAccessToken = null;
+    } else {
+      const discordAccessToken = aes.decrypt(
+        discordAccessTokenEncrypted,
+        SESSION_KEY,
+      );
+      event.locals.discordAccessToken = discordAccessToken.toString();
+    }
+  }
+
+  // Run the route logic.
   const response = await resolve(event);
 
-  // If this is the first time the user has visited this app, set a cookie so that we recognize them
-  // when they return.
-  response.headers.set(
-    "set-cookie",
-    cookie.serialize("userID", userID, {
-      path: "/",
-      httpOnly: true,
-    }),
-  );
+  // After running the route logic.
+  if (
+    event.locals.shouldSetCookie &&
+    event.locals.discordAccessToken !== null
+  ) {
+    const discordAccessTokenEncrypted = aes
+      .encrypt(event.locals.discordAccessToken, SESSION_KEY)
+      .toString();
+    response.headers.set(
+      "set-cookie",
+      cookie.serialize(COOKIE_NAME, discordAccessTokenEncrypted, {
+        path: "/",
+        httpOnly: true,
+        secure: true,
+        sameSite: true,
+      }),
+    );
+  }
 
   return response;
 };

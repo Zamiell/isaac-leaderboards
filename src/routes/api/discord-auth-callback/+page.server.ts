@@ -4,7 +4,7 @@ import type { PageServerLoad } from "./$types";
 
 export const REDIRECT_URI = "http://localhost:5173/api/discord/auth-callback";
 
-export const load: PageServerLoad = async ({ url }) => {
+export const load: PageServerLoad = async ({ url, locals }) => {
   const code = url.searchParams.get("code");
   if (code === null || code === "") {
     throw error(401, "Invalid Discord authorization code.");
@@ -41,11 +41,17 @@ export const load: PageServerLoad = async ({ url }) => {
       );
     }
 
-    const accessToken = tokenData.access_token;
+    const discordAccessToken = tokenData.access_token;
+    if (typeof discordAccessToken !== "string") {
+      throw error(
+        401,
+        "The access token returned from Discord was not a string.",
+      );
+    }
 
     const userRes = await fetch("https://discord.com/api/v6/users/@me", {
       headers: {
-        Authorization: `Bearer ${accessToken}`,
+        Authorization: `Bearer ${discordAccessToken}`,
       },
     });
 
@@ -59,6 +65,7 @@ export const load: PageServerLoad = async ({ url }) => {
 
     const userData = JSON.parse(userText) as Record<string, unknown>;
 
+    console.log("GETTING HERE userData:", userData);
     // `userData` will be something like:
     /*
       {
@@ -78,7 +85,10 @@ export const load: PageServerLoad = async ({ url }) => {
       }
     */
 
-    console.log("GETTING HERE 2:", userData);
+    // TODO: check for unique username
+
+    locals.discordAccessToken = discordAccessToken;
+    locals.shouldSetCookie = true;
 
     // TODO: redirect from where we came from
     throw redirect(307, "/");
