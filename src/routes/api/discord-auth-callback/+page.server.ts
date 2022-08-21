@@ -93,7 +93,7 @@ export const load: PageServerLoad = async ({ locals, url }) => {
     // TODO: redirect from where we came from
     throw redirect(307, "/");
   } catch (err) {
-    console.log("GETTING HERE 3:", err);
+    console.error(err);
     throw error(
       401,
       "Something went wrong when trying to get your Discord ID.",

@@ -6,15 +6,19 @@ import aes from "crypto-js/aes";
 const COOKIE_NAME = "discordAccessToken";
 
 export const handle: Handle = async ({ event, resolve }) => {
-  console.log("GETTING HERE 1");
-
   // Before running the route logic.
   {
     const cookieHeader = event.request.headers.get("cookie") ?? "";
     const cookies = cookie.parse(cookieHeader);
     const discordAccessTokenEncrypted = cookies[COOKIE_NAME];
 
-    if (discordAccessTokenEncrypted === "") {
+    if (
+      // The type definition for "cookie.parse" is bugged, as non-existent cookies will be
+      // "undefined".
+      // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
+      discordAccessTokenEncrypted === undefined ||
+      discordAccessTokenEncrypted === ""
+    ) {
       event.locals.discordAccessToken = null;
     } else {
       const discordAccessToken = aes.decrypt(
@@ -22,14 +26,7 @@ export const handle: Handle = async ({ event, resolve }) => {
         SESSION_KEY,
       );
 
-      // The type definitions for "crypto-js" are bugged, as decryption can fail and return null.
-      console.log("GETTING HERE 2:", discordAccessToken);
-      // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
-      if (discordAccessToken === null) {
-        event.locals.discordAccessToken = null;
-      } else {
-        event.locals.discordAccessToken = discordAccessToken.toString();
-      }
+      event.locals.discordAccessToken = discordAccessToken.toString();
     }
   }
 
