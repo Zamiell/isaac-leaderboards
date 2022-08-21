@@ -1,6 +1,6 @@
-# isaac-leaderboards
+# isaac-streaking
 
-This is the source code for the [Isaac Streaking Leaderboards](https://isaac-leaderboards.vercel.app/), a website that tracking streaking records for _[The Binding of Isaac: Repentance](https://store.steampowered.com/app/1426300/The_Binding_of_Isaac_Repentance/)_.
+This is the source code for the [Isaac Streaking Leaderboards](https://www.isaacstreaking.com/), a website that tracking streaking records for _[The Binding of Isaac: Repentance](https://store.steampowered.com/app/1426300/The_Binding_of_Isaac_Repentance/)_.
 
 The website is built with [SvelteKit](https://kit.svelte.dev/) + [Prisma](https://www.prisma.io/). It is hosted by [Vercel](https://vercel.com/) + [Supabase](https://supabase.com/).
 
@@ -13,8 +13,8 @@ Join our [Discord server](https://discord.gg/GwhUeQjHTF).
 Clone the repo and install dependencies:
 
 ```bash
-git clone git@github.com:Zamiell/isaac-leaderboards.git
-cd isaac-leaderboards
+git clone git@github.com:Zamiell/isaac-streaking.git
+cd isaac-streaking
 yarn install
 ```
 

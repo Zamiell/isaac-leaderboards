@@ -93,7 +93,7 @@
 
           <!-- GitHub -->
           <a
-            href="https://github.com/Zamiell/isaac-leaderboards"
+            href="https://github.com/Zamiell/isaac-streaking"
             target="_blank"
             rel="noopener noreferrer"
           >
