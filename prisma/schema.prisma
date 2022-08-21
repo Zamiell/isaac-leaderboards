@@ -13,15 +13,20 @@ model User {
   // Discord snowflake IDs are 8 bytes in size (e.g. `uint64`).
   discordID BigInt @unique
 
+  // We allow the end-user to customize their username. (It does not necessary have to match their
+  // Discord username.)
   username String @unique
 
   // Normalization is needed to prevent having a user of e.g. Alice and Alicè.
   normalizedUsername String @unique
 
-  lastIP            String
-  datetimeCreated   DateTime      @default(now())
-  datetimeLastLogin DateTime      @default(now())
-  userStreaks       UserStreaks[]
+  // Needed to ban malicious users, since Discord accounts are free.
+  lastIP String
+
+  datetimeCreated   DateTime @default(now())
+  datetimeLastLogin DateTime @default(now())
+
+  userStreaks UserStreaks[]
 }
 
 model UserStreaks {
@@ -37,4 +42,6 @@ model UserStreaks {
 
   streakNumCurrent Int
   streakNumBest    Int
+
+  @@unique([userID, character, goal])
 }
