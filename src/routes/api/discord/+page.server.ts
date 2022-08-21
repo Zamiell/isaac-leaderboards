@@ -1,6 +1,6 @@
 import { DISCORD_CLIENT_ID } from "$env/static/private";
 import { redirect } from "@sveltejs/kit";
-import { REDIRECT_URI } from "./auth-callback/+page.server";
+import { REDIRECT_URI } from "../discord-auth-callback/+page.server";
 
 export function load(): void {
   throw redirect(
