@@ -19,6 +19,7 @@ module.exports = {
 
   rules: {
     "import/extensions": "off",
+    "import/order": "off",
     "no-param-reassign": "off",
   },
 };

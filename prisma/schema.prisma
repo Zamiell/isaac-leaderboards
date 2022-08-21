@@ -8,39 +8,33 @@ generator client {
 }
 
 model User {
-  id                 Int               @id @default(autoincrement())
-  discordID          Int               @unique
-  username           String            @unique
-  normalizedUsername String            @unique
-  passwordHash       String
-  lastIP             String
-  datetimeCreated    DateTime          @default(now())
-  datetimeLastLogin  DateTime          @default(now())
-  userStats          UserStats[]
-  gameParticipants   GameParticipant[]
+  id Int @id @default(autoincrement())
+
+  // Discord snowflake IDs are 8 bytes in size (e.g. `uint64`).
+  discordID BigInt @unique
+
+  username String @unique
+
+  // Normalization is needed to prevent having a user of e.g. Alice and Alicè.
+  normalizedUsername String @unique
+
+  lastIP            String
+  datetimeCreated   DateTime      @default(now())
+  datetimeLastLogin DateTime      @default(now())
+  userStreaks       UserStreaks[]
 }
 
-model UserStats {
-  id              Int  @id @default(autoincrement())
-  user            User @relation(fields: [userID], references: [id])
-  userID          Int
-  numGames        Int
-  numWins         Int
-  numImposterWins Int
-  numCrewWins     Int
-}
-
-model Game {
-  id               Int               @id @default(autoincrement())
-  name             String
-  numPlayers       Int               @db.SmallInt
-  gameParticipants GameParticipant[]
-}
-
-model GameParticipant {
+model UserStreaks {
   id     Int  @id @default(autoincrement())
-  game   Game @relation(fields: [gameID], references: [id])
-  gameID Int
   user   User @relation(fields: [userID], references: [id])
   userID Int
+
+  // Matches the `PlayerType` enum: https://wofsauge.github.io/IsaacDocs/rep/enums/PlayerType.html
+  character Int
+
+  // Matches the `Goal` enum in "Goal.ts".
+  goal String
+
+  streakNumCurrent Int
+  streakNumBest    Int
 }

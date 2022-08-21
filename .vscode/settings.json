@@ -85,4 +85,8 @@
     "editor.formatOnSave": true,
     "editor.tabSize": 2,
   },
+  "[prisma]": {
+    "editor.formatOnSave": true,
+    "editor.tabSize": 2,
+  },
 }

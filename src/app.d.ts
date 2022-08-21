@@ -1,13 +1,13 @@
-// See https://kit.svelte.dev/docs/types#app
-// For information about these interfaces and what to do when importing types.
+// https://kit.svelte.dev/docs/types#app
 declare namespace App {
   interface Locals {
     userID: string;
   }
 
-  // interface Platform {}
-
-  // interface PrivateEnv {}
-
-  // interface PublicEnv {}
+  /** Must match the ".env.example" file. */
+  interface PrivateEnv {
+    DATABASE_URL: string;
+    DISCORD_CLIENT_ID: string;
+    DISCORD_CLIENT_SECRET: string;
+  }
 }
