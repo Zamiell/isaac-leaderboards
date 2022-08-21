@@ -19,7 +19,14 @@ export const handle: Handle = async ({ event, resolve }) => {
         discordAccessTokenEncrypted,
         SESSION_KEY,
       );
-      event.locals.discordAccessToken = discordAccessToken.toString();
+
+      // The type definitions for "crypto-js" are bugged, as decryption can fail and return null.
+      // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
+      if (discordAccessToken === null) {
+        event.locals.discordAccessToken = null;
+      } else {
+        event.locals.discordAccessToken = discordAccessToken.toString();
+      }
     }
   }
 
