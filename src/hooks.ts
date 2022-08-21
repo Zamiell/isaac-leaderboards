@@ -6,6 +6,8 @@ import aes from "crypto-js/aes";
 const COOKIE_NAME = "discordAccessToken";
 
 export const handle: Handle = async ({ event, resolve }) => {
+  console.log("GETTING HERE 1");
+
   // Before running the route logic.
   {
     const cookieHeader = event.request.headers.get("cookie") ?? "";
@@ -21,6 +23,7 @@ export const handle: Handle = async ({ event, resolve }) => {
       );
 
       // The type definitions for "crypto-js" are bugged, as decryption can fail and return null.
+      console.log("GETTING HERE 2:", discordAccessToken);
       // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
       if (discordAccessToken === null) {
         event.locals.discordAccessToken = null;
