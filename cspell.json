@@ -15,11 +15,15 @@
     ".svelte-kit/**"
   ],
   "words": [
+    "Alicè",
     "Andvil",
+    "autoincrement",
     "Cpath",
     "Csvg",
+    "datasource",
     "fira",
     "fontsource",
+    "gameplay",
     "haspopup",
     "headlessui",
     "Heroicon",
@@ -36,8 +40,11 @@
     "postcss",
     "rgba",
     "rgossiaux",
+    "softlock",
+    "speedrunning",
     "srcset",
     "steeze",
+    "Supabase",
     "sveltejs",
     "sveltekit",
     "Sxwe",
@@ -47,6 +54,8 @@
     "thead",
     "Todos",
     "webp",
-    "xlink"
+    "xlink",
+    "Zamiel",
+    "Zamiell"
   ]
 }

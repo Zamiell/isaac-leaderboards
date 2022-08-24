@@ -23,8 +23,8 @@ model User {
   // Needed to ban malicious users, since Discord accounts are free.
   lastIP String
 
-  datetimeCreated   DateTime @default(now())
-  datetimeLastLogin DateTime @default(now())
+  dateTimeCreated   DateTime @default(now())
+  dateTimeLastLogin DateTime @default(now())
 
   userStreaks UserStreaks[]
 }
