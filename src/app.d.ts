@@ -1,15 +1,20 @@
-// https://kit.svelte.dev/docs/types#app
-declare namespace App {
-  interface Locals {
-    discordAccessToken: string | null;
-    shouldSetCookie: boolean;
-  }
+import type { User } from "@prisma/client";
 
-  /** Must match the ".env.example" file. */
-  interface PrivateEnv {
-    SESSION_KEY: string;
-    DATABASE_URL: string;
-    DISCORD_CLIENT_ID: string;
-    DISCORD_CLIENT_SECRET: string;
+declare global {
+  // https://kit.svelte.dev/docs/types#app
+  namespace App {
+    interface Locals {
+      discordAccessToken: string | null;
+      shouldSetCookie: boolean;
+      user: User | null;
+    }
+
+    /** Must match the ".env.example" file. */
+    interface PrivateEnv {
+      SESSION_KEY: string;
+      DATABASE_URL: string;
+      DISCORD_CLIENT_ID: string;
+      DISCORD_CLIENT_SECRET: string;
+    }
   }
 }

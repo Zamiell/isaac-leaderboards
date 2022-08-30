@@ -49,45 +49,6 @@ export const load: PageServerLoad = async ({ locals, url }) => {
       );
     }
 
-    const userRes = await fetch("https://discord.com/api/v6/users/@me", {
-      headers: {
-        Authorization: `Bearer ${discordAccessToken}`,
-      },
-    });
-
-    const userText = await userRes.text();
-    if (!userRes.ok) {
-      throw error(
-        401,
-        `Something went wrong when trying to get your Discord username: ${userText}.`,
-      );
-    }
-
-    const userData = JSON.parse(userText) as Record<string, unknown>;
-
-    console.log("GETTING HERE userData:", userData);
-    // `userData` will be something like:
-    /*
-      {
-        id: '71242588694249472',
-        username: 'Zamiel',
-        avatar: 'f9600b33eaab162d36ca7698d6d37987',
-        avatar_decoration: null,
-        discriminator: '8743',
-        public_flags: 0,
-        flags: 0,
-        banner: null,
-        banner_color: null,
-        accent_color: null,
-        locale: 'en-US',
-        mfa_enabled: true,
-        premium_type: 2
-      }
-    */
-
-    // TODO: check for unique username
-    // https://github.com/FGRibreau/node-unidecode/issues/16
-
     locals.discordAccessToken = discordAccessToken;
     locals.shouldSetCookie = true;
 
