@@ -28,6 +28,12 @@ cp .env.example .env
 code .env # Fill in the values accordingly.
 ```
 
+Set up the database:
+
+```bash
+npx prisma migrate dev --name init
+```
+
 Run the server for development:
 
 ```bash

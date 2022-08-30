@@ -14,7 +14,7 @@ export const handle: Handle = async ({ event, resolve }) => {
 
     if (
       // The type definition for "cookie.parse" is bugged, as non-existent cookies will be
-      // "undefined".
+      // undefined.
       // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
       discordAccessTokenEncrypted === undefined ||
       discordAccessTokenEncrypted === ""

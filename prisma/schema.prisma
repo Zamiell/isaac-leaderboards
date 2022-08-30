@@ -10,14 +10,16 @@ generator client {
 model User {
   id Int @id @default(autoincrement())
 
-  // Discord snowflake IDs are 8 bytes in size (e.g. `uint64`).
-  discordID BigInt @unique
+  // Discord snowflake IDs are 8 bytes in size (e.g. `uint64`). The Discord API returns them as a
+  // string, so we will store them as a string in the database as well in order to keep things
+  // simple.
+  discordID String @unique
 
   // We allow the end-user to customize their username. (It does not necessary have to match their
   // Discord username.)
   username String @unique
 
-  // Normalization is needed to prevent having a user of e.g. Alice and Alicè.
+  // Normalization is needed to prevent having a user of "Alice" and "Alicè", for example.
   normalizedUsername String @unique
 
   // Needed to ban malicious users, since Discord accounts are free.
@@ -26,10 +28,10 @@ model User {
   dateTimeCreated   DateTime @default(now())
   dateTimeLastLogin DateTime @default(now())
 
-  userStreaks UserStreaks[]
+  userStreaks UserStreak[]
 }
 
-model UserStreaks {
+model UserStreak {
   id     Int  @id @default(autoincrement())
   user   User @relation(fields: [userID], references: [id])
   userID Int

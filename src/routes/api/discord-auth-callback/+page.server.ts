@@ -86,6 +86,7 @@ export const load: PageServerLoad = async ({ locals, url }) => {
     */
 
     // TODO: check for unique username
+    // https://github.com/FGRibreau/node-unidecode/issues/16
 
     locals.discordAccessToken = discordAccessToken;
     locals.shouldSetCookie = true;
