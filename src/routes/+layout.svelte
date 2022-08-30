@@ -172,7 +172,7 @@
           {#each navigation as item (item.name)}
             <DisclosureButton
               as="a"
-              href="poop"
+              href={item.href}
               class={classNames(
                 item.current
                   ? "bg-indigo-50 border-indigo-500 text-indigo-700"
