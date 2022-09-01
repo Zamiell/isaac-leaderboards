@@ -5,7 +5,7 @@
 <header>
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex">
     <img
-      src="tainted-lost.png"
+      src="/characters/tainted-lost.png"
       alt="Tainted Lost"
       class="h-12 w-10 relative bottom-1"
     />

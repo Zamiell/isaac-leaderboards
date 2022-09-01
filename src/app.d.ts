@@ -6,6 +6,7 @@ declare global {
     interface Locals {
       discordAccessToken: string | null;
       shouldSetCookie: boolean;
+      shouldDeleteCookie: boolean;
       user: User | null;
     }
 

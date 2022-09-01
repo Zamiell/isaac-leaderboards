@@ -29,6 +29,7 @@
     imageUrl:
       "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
   };
+  user = undefined;
 
   $: path = $page.url.pathname;
   $: navigation = [
@@ -51,12 +52,12 @@
           <div class="flex-shrink-0 flex items-center">
             <img
               class="block lg:hidden h-8 w-auto"
-              src="https://static.wikia.nocookie.net/bindingofisaacre_gamepedia/images/a/ae/Pickup_Soul_of_Eden_icon.png"
+              src="/soul-of-eden.png"
               alt="Logo"
             />
             <img
               class="hidden lg:block h-8 w-auto"
-              src="https://static.wikia.nocookie.net/bindingofisaacre_gamepedia/images/a/ae/Pickup_Soul_of_Eden_icon.png"
+              src="/soul-of-eden.png"
               alt="Logo"
             />
             <div class="mx-4 flex space-x-1 font-bold">Isaac Streaking</div>
@@ -166,13 +167,12 @@
       </div>
     </div>
 
-    {#if user}
-      <DisclosurePanel class="sm:hidden">
-        <div class="pt-2 pb-3 space-y-1">
-          {#each navigation as item (item.name)}
+    <DisclosurePanel class="sm:hidden">
+      <div class="pt-2 pb-3 space-y-1">
+        {#each navigation as item (item.name)}
+          <a href={item.href}>
             <DisclosureButton
               as="a"
-              href={item.href}
               class={classNames(
                 item.current
                   ? "bg-indigo-50 border-indigo-500 text-indigo-700"
@@ -183,10 +183,12 @@
             >
               {item.name}
             </DisclosureButton>
-          {/each}
-        </div>
+          </a>
+        {/each}
+      </div>
 
-        <div class="pt-4 pb-3 border-t border-gray-200">
+      <div class="pt-4 pb-3 border-t border-gray-200">
+        {#if user}
           <div class="flex items-center px-4">
             <div class="flex-shrink-0">
               <img class="h-10 w-10 rounded-full" src={user.imageUrl} alt="" />
@@ -198,18 +200,20 @@
           </div>
           <div class="mt-3 space-y-1">
             {#each userNavigation as item (item.name)}
-              <DisclosureButton
-                as="a"
-                href={item.href}
-                class="block px-4 py-2 text-base font-medium text-gray-500 hover:text-gray-800 hover:bg-gray-100"
-              >
-                {item.name}
-              </DisclosureButton>
+              <a href={item.href}>
+                <DisclosureButton
+                  class="block px-4 py-2 text-base font-medium text-gray-500 hover:text-gray-800 hover:bg-gray-100"
+                >
+                  {item.name}
+                </DisclosureButton>
+              </a>
             {/each}
           </div>
-        </div>
-      </DisclosurePanel>
-    {/if}
+        {:else}
+          <div class="flex items-center px-4"><a href="/login">Sign In</a></div>
+        {/if}
+      </div>
+    </DisclosurePanel>
   </Disclosure>
 
   <div class="py-10">

@@ -1,10 +1,12 @@
 // import * as models from "./models/index";
 import { SESSION_KEY } from "$env/static/private";
-import { error, type Handle, type RequestEvent } from "@sveltejs/kit";
+import type { Handle, RequestEvent } from "@sveltejs/kit";
 import * as cookie from "cookie";
 import aes from "crypto-js/aes";
 
 const COOKIE_NAME = "discordAccessToken";
+
+const ONE_YEAR_IN_SECONDS = 60 * 60 * 24 * 365;
 
 export const handle: Handle = async ({ event, resolve }) => {
   await beforeRouteLogic(event);
@@ -46,10 +48,7 @@ async function beforeRouteLogic(event: RequestEvent) {
 
   const userText = await userRes.text();
   if (!userRes.ok) {
-    throw error(
-      401,
-      `Something went wrong when trying to get your Discord username: ${userText}.`,
-    );
+    return;
   }
 
   const userData = JSON.parse(userText) as Record<string, unknown>;
@@ -93,6 +92,18 @@ function afterRouteLogic(event: RequestEvent, response: Response) {
         httpOnly: true,
         secure: true,
         sameSite: true,
+        maxAge: ONE_YEAR_IN_SECONDS,
+      }),
+    );
+  }
+
+  if (event.locals.shouldDeleteCookie) {
+    // We delete a cookie by setting its expiration date in the past:
+    // https://stackoverflow.com/questions/5285940/correct-way-to-delete-cookies-server-side
+    response.headers.set(
+      "set-cookie",
+      cookie.serialize(COOKIE_NAME, "", {
+        expires: new Date(Date.now() - 3600),
       }),
     );
   }

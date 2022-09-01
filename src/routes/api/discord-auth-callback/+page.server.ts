@@ -2,8 +2,12 @@ import { DISCORD_CLIENT_ID, DISCORD_CLIENT_SECRET } from "$env/static/private";
 import { error, redirect } from "@sveltejs/kit";
 import type { PageServerLoad } from "./$types";
 
-export const REDIRECT_URI = "http://localhost:5173/api/discord/auth-callback";
+export const REDIRECT_URI = "http://localhost:5173/api/discord-auth-callback";
 
+/**
+ * The user has just clicked "Authorize" on the "https://discord.com/oauth2/authorize" page to let
+ * this application access their username, so now we will retrieve a token on their behalf.
+ */
 export const load: PageServerLoad = async ({ locals, url }) => {
   const code = url.searchParams.get("code");
   if (code === null || code === "") {
@@ -51,14 +55,18 @@ export const load: PageServerLoad = async ({ locals, url }) => {
 
     locals.discordAccessToken = discordAccessToken;
     locals.shouldSetCookie = true;
-
-    // TODO: redirect from where we came from
-    throw redirect(307, "/");
   } catch (err) {
-    console.error(err);
+    console.error(
+      "Something went wrong when trying to get the Discord ID:",
+      err,
+    );
     throw error(
       401,
       "Something went wrong when trying to get your Discord ID.",
     );
   }
+
+  // The token retrieval was successful. It is now stored as a cookie. At this point, we do not know
+  // if they have previously registered an account, so redirect them to the login page.
+  throw redirect(307, "/login");
 };
