@@ -62,6 +62,7 @@
             />
             <div class="mx-4 flex space-x-1 font-bold">Isaac Streaking</div>
           </div>
+
           <div class="hidden sm:-my-px sm:ml-6 sm:flex sm:space-x-8">
             {#each navigation as item (item.name)}
               <!-- The Svelte language server stops working if we put logic inside of a class ternary for some reason. -->

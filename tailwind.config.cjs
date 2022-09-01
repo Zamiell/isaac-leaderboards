@@ -2,15 +2,15 @@ const config = {
   content: ["./src/**/*.{html,js,svelte,ts}"],
 
   theme: {
-    extend: {},
+    screens: {
+      sm: "890px",
+    },
   },
-
-  plugins: [],
 
   // Extra config
   mode: "jit", // Experimental setting
   darkMode: "class", // Allows the button to toggle
-  // TODO: For dark mode, we have to add all classes, which is a pain in the ass.
+  // TODO: For dark mode, we have to add all classes, which is painful.
 };
 
 module.exports = config;
