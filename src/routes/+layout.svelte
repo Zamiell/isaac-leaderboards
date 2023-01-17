@@ -33,8 +33,16 @@
 
   $: path = $page.url.pathname;
   $: navigation = [
-    { name: "Eden", href: "/eden", current: path === "/eden" },
-    { name: "Tainted Lost", href: "/lost", current: path === "/lost" },
+    {
+      name: "Eden",
+      href: "/leaderboards/eden",
+      current: path === "/leaderboards/eden",
+    },
+    {
+      name: "Tainted Lost",
+      href: "/leaderboards/lost",
+      current: path === "/leaderboards/lost",
+    },
     { name: "About", href: "/about", current: path === "/about" },
   ];
   const userNavigation = [{ name: "Sign out", href: "#" }];
@@ -67,7 +75,7 @@
             {#each navigation as item (item.name)}
               <!-- The Svelte language server stops working if we put logic inside of a class ternary for some reason. -->
               <a
-                href={item.href}
+                href={item.current ? undefined : item.href}
                 class={item.current
                   ? "inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium border-indigo-500 text-gray-900"
                   : "inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700"}

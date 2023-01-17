@@ -1,12 +1,12 @@
+import { Session } from "svelte-kit-cookie-session";
 import type { User } from "@prisma/client";
+import type { SessionData } from "./interfaces/SessionData";
 
 declare global {
   // https://kit.svelte.dev/docs/types#app
   namespace App {
     interface Locals {
-      discordAccessToken: string | null;
-      shouldSetCookie: boolean;
-      shouldDeleteCookie: boolean;
+      session: Session<SessionData>;
       user: User | null;
     }
 

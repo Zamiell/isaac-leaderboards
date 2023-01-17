@@ -17,6 +17,16 @@ module.exports = {
   },
 
   rules: {
+    /**
+     * This conflicts with the conventional SvelteKit format of:
+     *
+     * ```ts
+     * throw error(401, "This is my error.");
+     * ```
+     */
+    "@typescript-eslint/no-throw-literal": "off",
+
+    // TODO: try disabling
     "import/extensions": "off",
     "import/order": "off",
     "no-param-reassign": "off",

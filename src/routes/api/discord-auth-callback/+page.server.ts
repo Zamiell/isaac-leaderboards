@@ -1,8 +1,7 @@
 import { DISCORD_CLIENT_ID, DISCORD_CLIENT_SECRET } from "$env/static/private";
 import { error, redirect } from "@sveltejs/kit";
+import { DISCORD_AUTH_REDIRECT_URI } from "../../../constants";
 import type { PageServerLoad } from "./$types";
-
-export const REDIRECT_URI = "http://localhost:5173/api/discord-auth-callback";
 
 /**
  * The user has just clicked "Authorize" on the "https://discord.com/oauth2/authorize" page to let
@@ -25,7 +24,7 @@ export const load: PageServerLoad = async ({ locals, url }) => {
         client_secret: DISCORD_CLIENT_SECRET,
         grant_type: "authorization_code",
         code,
-        redirect_uri: REDIRECT_URI,
+        redirect_uri: DISCORD_AUTH_REDIRECT_URI,
       }),
     });
 
@@ -53,8 +52,9 @@ export const load: PageServerLoad = async ({ locals, url }) => {
       );
     }
 
-    locals.discordAccessToken = discordAccessToken;
-    locals.shouldSetCookie = true;
+    await locals.session.set({
+      discordAccessToken,
+    });
   } catch (err) {
     console.error(
       "Something went wrong when trying to get the Discord ID:",

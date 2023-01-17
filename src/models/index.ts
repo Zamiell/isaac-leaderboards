@@ -1,2 +1,7 @@
-export * as users from "./users";
-export * as userStreaks from "./userStreaks";
+import * as users from "./users";
+import * as userStreaks from "./userStreaks";
+
+export const models = {
+  users,
+  userStreaks,
+};
