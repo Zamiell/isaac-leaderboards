@@ -1,6 +1,6 @@
 import { DISCORD_CLIENT_ID, DISCORD_CLIENT_SECRET } from "$env/static/private";
 import { error, redirect } from "@sveltejs/kit";
-import { DISCORD_AUTH_REDIRECT_URI } from "../../../constants";
+import { DISCORD_AUTH_REDIRECT_URI } from "../../../constants.js";
 import type { PageServerLoad } from "./$types";
 
 /**
@@ -52,13 +52,17 @@ export const load: PageServerLoad = async ({ locals, url }) => {
       );
     }
 
+    console.log(locals);
+
+    /*
     await locals.session.set({
       discordAccessToken,
     });
-  } catch (err) {
+    */
+  } catch (error_) {
     console.error(
       "Something went wrong when trying to get the Discord ID:",
-      err,
+      error_,
     );
     throw error(
       401,

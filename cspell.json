@@ -1,20 +1,23 @@
 {
   "$schema": "https://raw.githubusercontent.com/streetsidesoftware/cspell/main/cspell.schema.json",
   "version": "0.2",
-  "files": [
-    "**"
-  ],
-  "enableFiletypes": [
-    "*"
-  ],
+  "files": ["**"],
+  "enableFiletypes": ["*"],
   "enableGlobDot": true,
   "useGitignore": true,
   "ignorePaths": [
-    ".git/**",
+    // @template-customization-start
     ".svelte-kit/**",
+    "prisma/migrations/**",
+    // @template-customization-end
+    "*.pyc",
+    ".git/**",
+    ".yarn/**",
     "dist/**",
     "node_modules/**",
-    "prisma/migrations/**"
+    "package-lock.json",
+    "pnpm-lock.yaml",
+    "yarn.lock"
   ],
   "words": [
     "Alicè",
@@ -32,9 +35,11 @@
     "headlessui",
     "heroicons",
     "isaacscript",
+    "knip",
     "Leaderboard",
     "leaderboards",
     "Neue",
+    "packagejson",
     "pnpm",
     "rgba",
     "rgossiaux",

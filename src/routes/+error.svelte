@@ -11,7 +11,7 @@
         {$page.status}
       </p>
       <p class="max-w-xl mt-5 mx-auto text-xl text-gray-500">
-        {$page.error.message}
+        {$page.error?.message}
       </p>
     </div>
   </div>

@@ -1,39 +1,46 @@
 #!/bin/bash
 
-set -e # Exit on any errors
+set -euo pipefail # Exit on errors and undefined variables.
 
 # Get the directory of this script:
 # https://stackoverflow.com/questions/59895/getting-the-source-directory-of-a-bash-script-from-within
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 
+# Get the name of the repository:
+# https://stackoverflow.com/questions/23162299/how-to-get-the-last-part-of-dirname-in-bash/23162553
+REPO_NAME="$(basename "$DIR")"
+
 SECONDS=0
 
 cd "$DIR"
 
-# Step 1 - Type check the TypeScript.
+# @template-customization-start
+# Type check the TypeScript.
 yarn run check
+# @template-customization-end
 
-# Step 2 - Use Prettier to check formatting.
-npx prettier --check .
+# Use Prettier to check formatting.
+# "--log-level=warn" makes it only output errors.
+npx prettier --log-level=warn --check .
 
-# Step 3 - Use ESLint to lint the TypeScript.
-# We use "--max-warnings" so that any warnings will fail in CI.
+# Use ESLint to lint the TypeScript.
+# "--max-warnings 0" makes warnings fail in CI, since we set all ESLint errors to warnings.
 npx eslint --max-warnings 0 .
 
-# Step 4 - Check for unused imports.
-# The "--error" flag makes it return an error code of 1 if unused exports are found.
-# We ignore the same patterns as specified in the ".eslintrc.cjs" file.
-# (Disabled during initial development.)
-#npx ts-prune --error --ignore ".svelte-kit|migrations"
+# Check for unused files, dependencies, and exports.
+# @template-ignore-next-line
+# npx knip # Disabled while in development.
 
-# Step 5 - Spell check every file using CSpell.
-# We use "--no-progress" and "--no-summary" because we want to only output errors.
+# Spell check every file using CSpell.
+# "--no-progress" and "--no-summary" make it only output errors.
 npx cspell --no-progress --no-summary .
 
-# Step 6 - Check for orphaned words.
-bash "$DIR/check-orphaned-words.sh"
+# Check for unused CSpell words.
+npx cspell-check-unused-words
 
-# Step 7 - Check for base file updates.
-bash "$DIR/check-file-updates.sh"
+# @template-customization-start
+# Check for base file updates.
+npx isaacscript check-ts --ignore "build.sh,ci.yml,publish.sh,run.sh,tsconfig.json"
+# @template-customization-end
 
-echo "Successfully linted in $SECONDS seconds."
+echo "Successfully linted $REPO_NAME in $SECONDS seconds."
