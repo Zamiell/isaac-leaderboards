@@ -15,5 +15,7 @@
     // These are ESLint-only inclusions.
     "./.eslintrc.cjs",
     "./tailwind.config.cjs",
+    "svelte.config.js",
+    "vite.config.js",
   ],
 }

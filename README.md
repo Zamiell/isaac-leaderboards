@@ -12,12 +12,23 @@ Join our [Discord server](https://discord.gg/GwhUeQjHTF).
 
 ## Dev
 
-Clone the repo and install dependencies:
+Clone the repo:
 
 ```bash
 git clone git@github.com:Zamiell/isaac-streaking.git
 cd isaac-streaking
+```
+
+Install dependencies:
+
+```bash
+corepack enable
 yarn install
+```
+
+Open the project in [VSCode](https://code.visualstudio.com/):
+
+```bash
 code .
 ```
 
@@ -31,7 +42,7 @@ code .env # Fill in the values accordingly.
 Set up the database:
 
 ```bash
-npx prisma migrate dev --name init
+./install_database.sh
 ```
 
 Run the server for development:

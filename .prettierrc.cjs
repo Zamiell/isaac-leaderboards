@@ -1,5 +1,7 @@
 // This is the configuration file for Prettier, the auto-formatter:
 // https://prettier.io/docs/en/configuration.html
+
+/** @type {import("prettier").Config} */
 module.exports = {
   // https://prettier.io/docs/en/options.html#trailing-commas
   // The default is "es5" - Trailing commas where valid in ES5 (objects, arrays, etc.)
@@ -26,4 +28,7 @@ module.exports = {
       },
     },
   ],
+
+  // pnpm requires that the plugin is explicitly loaded.
+  plugins: [require.resolve("prettier-plugin-organize-imports")],
 };

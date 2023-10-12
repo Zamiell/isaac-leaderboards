@@ -3,7 +3,7 @@
     {
       id: 123,
       name: "Andvil82",
-      streak: "436",
+      streak: "437",
       status: "Dead",
       vod: "https://www.twitch.tv/andvil82",
     },

@@ -22,7 +22,7 @@ export enum PlayerType {
   AZAZEL = 7,
   LAZARUS = 8,
   EDEN = 9,
-  THE_LOST = 10,
+  LOST = 10,
 
   /** Lazarus Risen, from the Lazarus' Rags collectible. */
   LAZARUS_2 = 11,
@@ -33,8 +33,8 @@ export enum PlayerType {
   LILITH = 13,
   KEEPER = 14,
   APOLLYON = 15,
-  THE_FORGOTTEN = 16,
-  THE_SOUL = 17,
+  FORGOTTEN = 16,
+  SOUL = 17,
   BETHANY = 18,
   JACOB = 19,
   ESAU = 20,
@@ -70,7 +70,7 @@ export enum PlayerType {
   EDEN_B = 30,
 
   /** Tainted Lost */
-  THE_LOST_B = 31,
+  LOST_B = 31,
 
   /** Tainted Lilith */
   LILITH_B = 32,
@@ -82,7 +82,7 @@ export enum PlayerType {
   APOLLYON_B = 34,
 
   /** Tainted Forgotten */
-  THE_FORGOTTEN_B = 35,
+  FORGOTTEN_B = 35,
 
   /** Tainted Bethany */
   BETHANY_B = 36,
@@ -97,5 +97,5 @@ export enum PlayerType {
   JACOB_2_B = 39,
 
   /** Tainted Soul */
-  THE_SOUL_B = 40,
+  SOUL_B = 40,
 }

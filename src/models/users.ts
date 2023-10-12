@@ -52,9 +52,11 @@ export async function setIP(discordID: string, ip: string): Promise<void> {
   });
 }
 
+/**
+ * We use the "transliteration" library to convert Unicode characters to ASCII. This prevents having
+ * a user of "Alice" and "Alicè", for example.
+ */
 function normalizeUsername(username: string) {
-  // We use the "transliteration" library to convert Unicode characters to ASCII. This prevents
-  // having a user of "Alice" and "Alicè", for example.
   const asciiUsername = transliterate(username);
   return asciiUsername.toLowerCase();
 }

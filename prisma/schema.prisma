@@ -1,3 +1,5 @@
+// https://www.prisma.io/docs/concepts/components/prisma-schema
+
 datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
@@ -36,7 +38,7 @@ model UserStreak {
   user   User @relation(fields: [userID], references: [id])
   userID Int
 
-  // Matches the `PlayerType` enum: https://wofsauge.github.io/IsaacDocs/rep/enums/PlayerType.html
+  // Matches the `PlayerType` enum in "PlayerType.ts".
   character Int
 
   // Matches the `Goal` enum in "Goal.ts".

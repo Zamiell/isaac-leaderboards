@@ -1,2 +1,5 @@
 - prisma + leaderboard data in DB
 - discord login
+
+- extend from isaacscript-ts strict config in TypeScript 5.0
+- go over ".eslintrc.cjs"

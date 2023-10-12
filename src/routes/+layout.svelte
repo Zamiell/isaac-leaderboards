@@ -16,6 +16,7 @@
   } from "@rgossiaux/svelte-heroicons/outline";
   import "../app.postcss";
   import { page } from "$app/stores";
+  import { signIn, signOut } from "@auth/sveltekit/client";
 
   interface User {
     name: string;
@@ -45,7 +46,7 @@
     },
     { name: "About", href: "/about", current: path === "/about" },
   ];
-  const userNavigation = [{ name: "Sign out", href: "#" }];
+  const userNavigation: Array<{ name: string; href: string }> = [];
 
   function classNames(...classes: string[]) {
     return classes.filter(Boolean).join(" ");
@@ -114,18 +115,20 @@
           </a>
 
           <!-- Profile dropdown -->
-          {#if user}
+          {#if $page.data.session}
             <Menu as="div" class="ml-3 relative">
               <div>
                 <MenuButton
                   class="max-w-xs bg-white flex items-center text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                 >
                   <span class="sr-only">Open user menu</span>
-                  <img
-                    class="h-8 w-8 rounded-full"
-                    src={user.imageUrl}
-                    alt=""
-                  />
+                  {#if $page.data.session.user?.image}
+                    <img
+                      class="h-8 w-8 rounded-full"
+                      src={$page.data.session.user.image}
+                      alt=""
+                    />
+                  {/if}
                 </MenuButton>
               </div>
               <Transition
@@ -150,14 +153,23 @@
                       </a>
                     </MenuItem>
                   {/each}
+                  <MenuItem let:active>
+                    <button
+                      class="block px-4 py-2 text-sm text-gray-700 w-full text-left"
+                      class:bg-gray-100={active}
+                      on:click={() => signOut()}
+                    >
+                      Sign out
+                    </button>
+                  </MenuItem>
                 </MenuItems>
               </Transition>
             </Menu>
           {:else}
-            <a href="/login" class="flex">
+            <button on:click={() => signIn("discord")} class="flex">
               <LoginIcon class="-ml-1 mr-2 h-6 w-6" aria-hidden="true" />
               Sign in
-            </a>
+            </button>
           {/if}
         </div>
         <div class="-mr-2 flex items-center sm:hidden">
@@ -197,14 +209,24 @@
       </div>
 
       <div class="pt-4 pb-3 border-t border-gray-200">
-        {#if user}
+        {#if $page.data.session}
           <div class="flex items-center px-4">
             <div class="flex-shrink-0">
-              <img class="h-10 w-10 rounded-full" src={user.imageUrl} alt="" />
+              {#if $page.data.session.user?.image}
+                <img
+                  class="h-10 w-10 rounded-full"
+                  src={$page.data.session.user?.image}
+                  alt=""
+                />
+              {/if}
             </div>
             <div class="ml-3">
-              <div class="text-base font-medium text-gray-800">{user.name}</div>
-              <div class="text-sm font-medium text-gray-500">{user.email}</div>
+              <div class="text-base font-medium text-gray-800">
+                {$page.data.session.user?.name}
+              </div>
+              <div class="text-sm font-medium text-gray-500">
+                {$page.data.session.user?.email}
+              </div>
             </div>
           </div>
           <div class="mt-3 space-y-1">
@@ -219,7 +241,9 @@
             {/each}
           </div>
         {:else}
-          <div class="flex items-center px-4"><a href="/login">Sign In</a></div>
+          <div class="flex items-center px-4">
+            <button on:click={() => signIn("discord")}>Sign In</button>
+          </div>
         {/if}
       </div>
     </DisclosurePanel>

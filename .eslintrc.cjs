@@ -3,11 +3,11 @@
 module.exports = {
   extends: [
     // The linter base is the shared IsaacScript config:
-    // https://github.com/IsaacScript/eslint-config-isaacscript/blob/main/base.js
+    // https://github.com/IsaacScript/isaacscript/blob/main/packages/eslint-config-isaacscript/base.js
     "eslint-config-isaacscript/base",
   ],
 
-  ignorePatterns: ["./.svelte-kit/**", "./dist"],
+  ignorePatterns: ["**/.svelte-kit/**", "**/dist/**"],
 
   parserOptions: {
     // ESLint needs to know about the project's TypeScript settings in order for TypeScript-specific
