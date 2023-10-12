@@ -1,5 +1,6 @@
 <script>
   const players = [
+    /*
     {
       id: 123,
       name: "Andvil82",
@@ -7,6 +8,7 @@
       status: "Dead",
       vod: "https://www.twitch.tv/andvil82",
     },
+    */
   ];
 </script>
 
@@ -106,6 +108,12 @@
           </table>
         </div>
       </div>
+    </div>
+    <div class="sm:flex-auto">
+      <p class="mt-2 text-sm text-gray-700">
+        <br />
+        The leaderboard is currently under development.
+      </p>
     </div>
   </div>
 </div>
