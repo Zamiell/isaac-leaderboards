@@ -1,4 +1,6 @@
-import { sveltekit } from "@sveltejs/kit/vite.js";
+/* eslint-disable n/file-extension-in-import */
+
+import { sveltekit } from "@sveltejs/kit/vite";
 
 /** @type {import('vite').UserConfig} */
 const config = {
