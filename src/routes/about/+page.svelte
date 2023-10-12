@@ -105,6 +105,19 @@
                     Mods that make lucky pennies and tinted rocks easier to see
                     are allowed, since they count as cosmetic mods.
                   </li>
+                  <li>
+                    Mods that swap the sound effects and/or music are allowed,
+                    since they count as cosmetic mods.
+                  </li>
+                  <li>
+                    <a
+                      href="https://steamcommunity.com/sharedfiles/filedetails/?id=1978904635"
+                      >MinimapAPI</a
+                    > is allowed, since it counts as a cosmetic mods. (Note that
+                    you must configure MinimapAPI in a way that is comparable to
+                    the vanilla minimap, such that you do not get any gameplay-related
+                    advantage.)
+                  </li>
                 </ul>
               </li>
               <li>
@@ -123,6 +136,13 @@
                 character from the streak you are working on, you are allowed to
                 exit the game and restore a previously backed up save file in
                 order to preserve the streak count.
+              </li>
+              <li>
+                You are allowed to change any value inside the "options.ini" and
+                "config.ini" files. (Not all of the configurable values are
+                properly exposed in the in-game menus, so editing the files
+                manually is needed to enable some options, such as mouse
+                control.)
               </li>
               <li>
                 You are not allowed to use Cheat Engine, replace the game files,
@@ -151,10 +171,16 @@
                 You are not allowed to pause the game in order to gain any type
                 of gameplay advantage. (For example, you are not allowed to
                 pause in the middle of a fight to think about what to do next,
-                go back to the menu to escape damage, stop a restock machine
-                from "double rolling", delete champions, reset the Holy Mantle,
-                and so on.) You are allowed to save and quit and continue if it
-                the only way to recover from a soft-lock such as a bugged room.
+                go back to the menu to escape damage, reset the Holy Mantle,
+                stop a Restock Machine from "double rolling", select
+                collectibles more easily with Glitched Crown, and so on.)
+
+                <ul>
+                  <li>
+                    You are allowed to save and quit and continue if it the only
+                    way to recover from a soft-lock.
+                  </li>
+                </ul>
               </li>
               <li>
                 All runs should have the seeds visible on the screen, so that
@@ -206,6 +232,10 @@
                     console usage.
                   </li>
                 </ul>
+              </li>
+              <li>
+                You are not allowed to look up the recipes for Bag of Crafting
+                corresponding to the seed of your run.
               </li>
             </ul>
           </article>
