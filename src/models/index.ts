@@ -1,5 +1,5 @@
-import * as users from "./users";
-import * as userStreaks from "./userStreaks";
+import * as users from "./users.js";
+import * as userStreaks from "./userStreaks.js";
 
 export const models = {
   users,

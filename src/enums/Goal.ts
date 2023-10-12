@@ -1,3 +1,5 @@
+/* eslint-disable isaacscript/consistent-enum-values */
+
 /** Based on the `RaceGoal` enum from Racing+. */
 export enum Goal {
   BLUE_BABY = "Blue Baby",

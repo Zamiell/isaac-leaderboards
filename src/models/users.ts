@@ -1,6 +1,6 @@
 import type { User } from "@prisma/client";
 import { transliterate } from "transliteration";
-import { db } from "./database";
+import { db } from "./database.js";
 
 export async function exists(username: string): Promise<boolean> {
   const normalizedUsername = normalizeUsername(username);

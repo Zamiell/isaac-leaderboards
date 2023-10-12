@@ -1,9 +1,9 @@
 import type { UserStreak } from "@prisma/client";
-import type { Goal } from "../enums/Goal";
-import type { PlayerType } from "../enums/PlayerType";
-import { db } from "./database";
+import type { Goal } from "../enums/Goal.js";
+import type { PlayerType } from "../enums/PlayerType.js";
+import { db } from "./database.js";
 
-export function getLeaderboard(
+export async function getLeaderboard(
   character: PlayerType,
   goal: Goal,
 ): Promise<UserStreak[]> {

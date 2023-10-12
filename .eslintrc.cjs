@@ -36,6 +36,7 @@ const config = {
     // TODO: try disabling
     "import/extensions": "off",
     "import/order": "off",
+    "new-cap": "off",
     "no-param-reassign": "off",
 
     // @template-customization-end

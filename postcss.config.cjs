@@ -1,3 +1,6 @@
+/* eslint-disable import/no-extraneous-dependencies */
+/* eslint-disable n/no-unpublished-require */
+
 const tailwindcss = require("tailwindcss");
 const autoprefixer = require("autoprefixer");
 

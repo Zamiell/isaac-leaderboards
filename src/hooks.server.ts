@@ -1,21 +1,19 @@
-import { DISCORD_CLIENT_ID, DISCORD_CLIENT_SECRET } from "$env/static/private";
 import type { Provider } from "@auth/core/providers";
-import Discord from "@auth/core/providers/discord";
 import { SvelteKitAuth } from "@auth/sveltekit";
-import { PrismaAdapter } from "@next-auth/prisma-adapter";
-import { db } from "./models/database";
 
 export const handle = SvelteKitAuth({
   // The type assertion is necessary:
   // https://github.com/nextauthjs/next-auth/issues/6174
   providers: [
+    /*
     Discord({
       clientId: DISCORD_CLIENT_ID,
       clientSecret: DISCORD_CLIENT_SECRET,
     }),
+    */
   ] as Provider[],
 
-  adapter: PrismaAdapter(db),
+  // adapter: PrismaAdapter(db),
 });
 
 /** Has to be above the `handle` definition since function expressions are not hoisted. */

@@ -1,3 +1,5 @@
+/* eslint-disable isaacscript/no-number-enums */
+
 /**
  * For `EntityType.PLAYER` (1), `PlayerVariant.PLAYER` (0).
  *

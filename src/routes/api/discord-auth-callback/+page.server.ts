@@ -1,4 +1,3 @@
-import { DISCORD_CLIENT_ID, DISCORD_CLIENT_SECRET } from "$env/static/private";
 import { error, redirect } from "@sveltejs/kit";
 import { DISCORD_AUTH_REDIRECT_URI } from "../../../constants.js";
 import type { PageServerLoad } from "./$types";
@@ -20,8 +19,8 @@ export const load: PageServerLoad = async ({ locals, url }) => {
         accept: "application/json",
       },
       body: new URLSearchParams({
-        client_id: DISCORD_CLIENT_ID,
-        client_secret: DISCORD_CLIENT_SECRET,
+        /// client_id: DISCORD_CLIENT_ID,
+        /// client_secret: DISCORD_CLIENT_SECRET,
         grant_type: "authorization_code",
         code,
         redirect_uri: DISCORD_AUTH_REDIRECT_URI,
