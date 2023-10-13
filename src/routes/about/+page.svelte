@@ -98,12 +98,6 @@
                     sprite tweaks.)
                   </li>
                   <li>
-                    There is not consensus on whether mods that skip "giantbook"
-                    animations such as Whore of Babylon are allowed. Some people
-                    consider them as cosmetic mods and other people consider
-                    them as affecting gameplay.
-                  </li>
-                  <li>
                     Mods that make lucky pennies and tinted rocks easier to see
                     are allowed, since they count as cosmetic mods.
                   </li>
@@ -119,6 +113,12 @@
                     you must configure MinimapAPI in a way that is comparable to
                     the vanilla minimap, such that you do not get any gameplay-related
                     advantage.)
+                  </li>
+                  <li>
+                    Mods that skip "giantbook" animations such as Whore of
+                    Babylon are not allowed, since some people consider them to
+                    affect gameplay in the sense that they interrupt the tempo
+                    of having to dodge difficult boss patterns.
                   </li>
                 </ul>
               </li>
