@@ -98,8 +98,10 @@
                     sprite tweaks.)
                   </li>
                   <li>
-                    Mods that skip "giantbook" animations such as Whore of
-                    Babylon are allowed, since they count as cosmetic mods.
+                    There is not consensus on whether mods that skip "giantbook"
+                    animations such as Whore of Babylon are allowed. Some people
+                    consider them as cosmetic mods and other people consider
+                    them as affecting gameplay.
                   </li>
                   <li>
                     Mods that make lucky pennies and tinted rocks easier to see
