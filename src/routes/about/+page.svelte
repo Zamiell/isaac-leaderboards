@@ -156,11 +156,23 @@
 
             <ul class="section-text">
               <li>
-                You must trigger the ending cinematic of the goal for the
-                category you are playing. (For example, if you complete the goal
-                but die before jumping into the chest, your streak is not
+                You must trigger the ending cinematic/cutscene of the goal for
+                the category you are playing. (For example, if you complete the
+                goal but die before jumping into the chest, your streak is not
                 incremented and it is counted the same as if you died to the
-                boss. Ending a run at Cathedral or Sheol is not allowed.)
+                boss.)
+
+                <ul>
+                  <li>
+                    Ending a run at Cathedral or Sheol is not allowed. Your
+                    streak is reset to 0 in this case.
+                  </li>
+                  <li>
+                    Ending a run by skipping the main goal in order to do a
+                    harder goal like Delirium is not allowed. Your streak is
+                    reset to 0 in this case.
+                  </li>
+                </ul>
               </li>
               <li>
                 You are allowed to end the run on another character than the one
