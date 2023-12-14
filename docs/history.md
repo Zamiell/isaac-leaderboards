@@ -32,7 +32,7 @@ Rules are voted on in the [Isaac Streaking Discord server](https://discord.gg/Gw
 - No.
 - 12 yes, 22 no.
 
-## Are you allowed to kill Delirium as a way to continue the streak as a +0, even if you you did not kill your boss goal? [by Moucheron Quipet]
+### Are you allowed to kill Delirium as a way to continue the streak as a +0, even if you you did not kill your boss goal? [by Moucheron Quipet]
 
 - No.
 - 10 yes, 10 no.
@@ -57,10 +57,15 @@ Rules are voted on in the [Isaac Streaking Discord server](https://discord.gg/Gw
 - Yes.
 - 20 yes, 2 no.
 
-### Are you allowed to use the MinimapAPI mod? [by slvn]
+### Are you allowed to use the [MinimapAPI](https://steamcommunity.com/sharedfiles/filedetails/?id=1978904635) mod? [by slvn]
 
 - Yes.
 - 14 yes, 6 no.
+
+### Are you allowed to use the [Planetarium Chance](https://steamcommunity.com/sharedfiles/filedetails/?id=2489006943) mod? [by cutifire]
+
+- Yes.
+- 11 yes, 5 no.
 
 <br>
 

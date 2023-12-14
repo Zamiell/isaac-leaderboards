@@ -109,10 +109,16 @@
                     <a
                       href="https://steamcommunity.com/sharedfiles/filedetails/?id=1978904635"
                       >MinimapAPI</a
-                    > is allowed, since it counts as a cosmetic mods. (Note that
-                    you must configure MinimapAPI in a way that is comparable to
-                    the vanilla minimap, such that you do not get any gameplay-related
+                    > is allowed, since it counts as a cosmetic mod. (Note that you
+                    must configure MinimapAPI in a way that is comparable to the
+                    vanilla minimap, such that you do not get any gameplay-related
                     advantage.)
+                  </li>
+                  <li>
+                    The <a
+                      href="https://steamcommunity.com/sharedfiles/filedetails/?id=2489006943"
+                      >Planetarium Chance</a
+                    > mod is allowed, since it counts as a cosmetic mod.
                   </li>
                   <li>
                     Mods that skip "giantbook" animations such as Whore of
