@@ -267,6 +267,12 @@
           <ul class="section-text">
             <li>
               <a
+                href="https://github.com/Zamiell/isaac-streaking/blob/main/docs/history.md"
+                >Rule voting history</a
+              >
+            </li>
+            <li>
+              <a
                 href="https://docs.google.com/spreadsheets/d/1So2N0caOnTe7ctLg1OYEYg_8Eqc_ak03Vm4TXsgHG0c/edit#gid=2144039399"
                 target="_blank"
                 rel="noopener noreferrer"
