@@ -1,5 +1,13 @@
-<script>
-  const players = [
+<script lang="typescript">
+  interface Player {
+    id: number;
+    name: string;
+    streak: number;
+    status: string;
+    vod: string;
+  }
+
+  const players: Player[] = [
     /*
     {
       id: 123,

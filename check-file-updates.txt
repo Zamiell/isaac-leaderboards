@@ -1,3 +1,0 @@
-.prettierrc.cjs
-check-file-updates.sh
-check-orphaned-words.sh
