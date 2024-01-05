@@ -1,6 +1,6 @@
 # Rule Voting History
 
-<!-- cspell:ignore Aruthe,cutifire,Kaizoku,mgln,Moucheron,Poilopopo,Quipet,slvn,Toooschi -->
+<!-- cspell:ignore Aruthe,Childy,cutifire,Kaizoku,mgln,Moucheron,Poilopopo,Quipet,slvn,Superpaper,Toooschi -->
 <!-- markdownlint-disable MD033 -->
 
 Rules are voted on in the [Isaac Streaking Discord server](https://discord.gg/GwhUeQjHTF).
@@ -66,6 +66,15 @@ Rules are voted on in the [Isaac Streaking Discord server](https://discord.gg/Gw
 
 - Yes.
 - 11 yes, 5 no.
+
+### Are you allowed to use the [Time Machine](https://steamcommunity.com/sharedfiles/filedetails/?id=2617557401) mod? [by cutifire]
+
+- Still undetermined.
+
+### Are you allowed to save and quit the run in order to reset the Kidney Stone timer? [by SuperpaperChildy]
+
+- No.
+- 0 yes, 8 no.
 
 <br>
 
