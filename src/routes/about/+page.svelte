@@ -121,6 +121,12 @@
                     > mod is allowed, since it counts as a cosmetic mod.
                   </li>
                   <li>
+                    The <a
+                      href="https://steamcommunity.com/sharedfiles/filedetails/?id=2617557401"
+                      >Time Machine</a
+                    > mod is allowed, since it does not alter gameplay.
+                  </li>
+                  <li>
                     Mods that skip "giantbook" animations such as Whore of
                     Babylon are not allowed, since some people consider them to
                     affect gameplay in the sense that they interrupt the tempo

@@ -69,7 +69,9 @@ Rules are voted on in the [Isaac Streaking Discord server](https://discord.gg/Gw
 
 ### Are you allowed to use the [Time Machine](https://steamcommunity.com/sharedfiles/filedetails/?id=2617557401) mod? [by cutifire]
 
-- Still undetermined.
+- Yes.
+- 8 yes, 5 no.
+- This mod does not alter gameplay, which is shown by cutifire's videos. [<a href="https://www.youtube.com/watch?v=MbDBpf-zE88&feature=youtu.be">1</a>] [<a href="https://www.youtube.com/watch?v=LfPNXTCKwXs&feature=youtu.be">2</a>]
 
 ### Are you allowed to save and quit the run in order to reset the Kidney Stone timer? [by SuperpaperChildy]
 
