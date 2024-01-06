@@ -224,8 +224,8 @@
                 If you are streaking as Eden and you randomly get TMTRAINER, you
                 are allowed to skip the run without losing your streak.
                 (However, this rule does not apply if the TMTRAINER was granted
-                by an Eden's Blessing or a Genesis. If that was the case, then you have to
-                continue the run.)
+                by an Eden's Blessing or a Genesis. If that was the case, then
+                you have to continue the run.)
               </li>
               <li>
                 You are not allowed to use the in-game console, with two
