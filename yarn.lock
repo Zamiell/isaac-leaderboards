@@ -43,9 +43,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@auth/core@npm:0.27.0, @auth/core@npm:^0.27.0":
-  version: 0.27.0
-  resolution: "@auth/core@npm:0.27.0"
+"@auth/core@npm:0.21.0":
+  version: 0.21.0
+  resolution: "@auth/core@npm:0.21.0"
   dependencies:
     "@panva/hkdf": "npm:^1.1.1"
     "@types/cookie": "npm:0.6.0"
@@ -55,30 +55,43 @@ __metadata:
     preact: "npm:10.11.3"
     preact-render-to-string: "npm:5.2.3"
   peerDependencies:
-    "@simplewebauthn/browser": ^9.0.1
-    "@simplewebauthn/server": ^9.0.2
     nodemailer: ^6.8.0
   peerDependenciesMeta:
-    "@simplewebauthn/browser":
-      optional: true
-    "@simplewebauthn/server":
-      optional: true
     nodemailer:
       optional: true
-  checksum: 10c0/66862fa96d68435500b71eb16afc2639d9eb2fb6c40a477e984df6606ae2b6e05d2d3eeca3ea48a289adea7586ee81a680a3b26ba7f0cd90f63e17a90e997bf6
+  checksum: 10c0/e34fc3a0b81512dcaa56177f86581c7b945e4df9328357ef43934a882806e63c59cf20bc6bb153396efe0f4b987617e70d14487f52b85410eab5a05dbe349f4f
   languageName: node
   linkType: hard
 
-"@auth/sveltekit@npm:^0.13.0":
-  version: 0.13.0
-  resolution: "@auth/sveltekit@npm:0.13.0"
+"@auth/core@npm:^0.19.0":
+  version: 0.19.1
+  resolution: "@auth/core@npm:0.19.1"
   dependencies:
-    "@auth/core": "npm:0.27.0"
-    set-cookie-parser: "npm:^2.6.0"
+    "@panva/hkdf": "npm:^1.1.1"
+    "@types/cookie": "npm:0.6.0"
+    cookie: "npm:0.6.0"
+    jose: "npm:^5.1.3"
+    oauth4webapi: "npm:^2.4.0"
+    preact: "npm:10.11.3"
+    preact-render-to-string: "npm:5.2.3"
+  peerDependencies:
+    nodemailer: ^6.8.0
+  peerDependenciesMeta:
+    nodemailer:
+      optional: true
+  checksum: 10c0/82f730564140c3b5437fd5cf72142fc43e607c085cc260af2e13582366e05129529673c0197ea6225fb2629034f1c88c5b59d5b92d61c7fdd31bb5d7487d49f6
+  languageName: node
+  linkType: hard
+
+"@auth/sveltekit@npm:^0.5.0":
+  version: 0.5.3
+  resolution: "@auth/sveltekit@npm:0.5.3"
+  dependencies:
+    "@auth/core": "npm:0.21.0"
   peerDependencies:
     "@sveltejs/kit": ^1.0.0 || ^2.0.0
-    svelte: ^3.54.0 || ^4.0.0 || ^5
-  checksum: 10c0/04a50b6cf33e08010b28dfa37ae32af61f3d7b2f7026d644ecf57649a24c3a1fb069afbbd56c0a6cf0c623e021244c5ead2a4b42d8a2d32064ea536f1be4b676
+    svelte: ^3.54.0 || ^4.0.0
+  checksum: 10c0/85051de08ee4289d24efb63f6b06209965288dc60f0ca8f87025186a5a2e17a7a7d2551b2c3a79cb5ffa3acbece0059241439f33c3a0766bf210f1a28d32c266
   languageName: node
   linkType: hard
 
@@ -1521,7 +1534,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@prisma/client@npm:^5.10.2":
+"@prisma/client@npm:^5.7.1":
   version: 5.10.2
   resolution: "@prisma/client@npm:5.10.2"
   peerDependencies:
@@ -1756,9 +1769,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@sveltejs/kit@npm:^2.5.1":
-  version: 2.5.1
-  resolution: "@sveltejs/kit@npm:2.5.1"
+"@sveltejs/kit@npm:^2.0.6":
+  version: 2.5.2
+  resolution: "@sveltejs/kit@npm:2.5.2"
   dependencies:
     "@types/cookie": "npm:^0.6.0"
     cookie: "npm:^0.6.0"
@@ -1778,7 +1791,7 @@ __metadata:
     vite: ^5.0.3
   bin:
     svelte-kit: svelte-kit.js
-  checksum: 10c0/9f7c7ff60f349a35900b9b056bd67f90a5a1348322b775c4880d2e6a0d0a358d0a7e4b79735f7b6cbcf71cb58ac30cb21e201c6ff49c00542f4b715a5f274615
+  checksum: 10c0/9d07f9d31c9c2ea3d43f08c0f13f81f009d1c9513ffba5140f5620a683ef814664b38186b43391d99316b1e95cf65c01fc29e50f61d47efd0cfa0d4681c31514
   languageName: node
   linkType: hard
 
@@ -1795,7 +1808,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@sveltejs/vite-plugin-svelte@npm:^3.0.2":
+"@sveltejs/vite-plugin-svelte@npm:^3.0.1":
   version: 3.0.2
   resolution: "@sveltejs/vite-plugin-svelte@npm:3.0.2"
   dependencies:
@@ -5312,16 +5325,16 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "isaac-streaking@workspace:."
   dependencies:
-    "@auth/core": "npm:^0.27.0"
-    "@auth/sveltekit": "npm:^0.13.0"
+    "@auth/core": "npm:^0.19.0"
+    "@auth/sveltekit": "npm:^0.5.0"
     "@fontsource/inter": "npm:^5.0.16"
     "@next-auth/prisma-adapter": "npm:^1.0.7"
-    "@prisma/client": "npm:^5.10.2"
+    "@prisma/client": "npm:^5.7.1"
     "@rgossiaux/svelte-headlessui": "npm:^2.0.0"
     "@rgossiaux/svelte-heroicons": "npm:^0.1.2"
     "@sveltejs/adapter-auto": "npm:^3.1.1"
-    "@sveltejs/kit": "npm:^2.5.1"
-    "@sveltejs/vite-plugin-svelte": "npm:^3.0.2"
+    "@sveltejs/kit": "npm:^2.0.6"
+    "@sveltejs/vite-plugin-svelte": "npm:^3.0.1"
     "@tailwindcss/typography": "npm:^0.5.10"
     autoprefixer: "npm:^10.4.17"
     isaacscript: "npm:^4.2.2"
