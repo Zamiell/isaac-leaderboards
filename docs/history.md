@@ -37,7 +37,7 @@ Rules are voted on in the [Isaac Streaking Discord server](https://discord.gg/Gw
 - No.
 - 10 yes, 10 no.
 
-### Are you allowed to exploit bugs relating to Glowing Hour Glass in order to make it have infinite charges? [by superpaperchildy]
+### Are you allowed to exploit bugs relating to Glowing Hour Glass in order to make it have infinite charges? [by SuperpaperChildy]
 
 - Yes.
 - 8 yes, 6 no.
